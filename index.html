@@ -20,6 +20,8 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href='css/custom.css'>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -27,14 +29,20 @@
 
     <div class="row"> <!--header-->
         <div class="col-xs-12 header">
-            <row>
-                <div class="col-md-offset-5 col-md-2 col-sm-offset-4 col-sm-4 col-xs-offset-3 col-xs-6">
-                    <img id="logo" src="images/logo.png">
-                </div>
-            </row>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-default btn-xs pull-right" id="settings-button" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-cog"></span>
+            </button>
 
             <div class="row">
-                <div class="col-md-offset-2 col-md-8">
+                <div class="col-md-offset-5 col-md-2 col-sm-offset-5 col-sm-2 col-xs-offset-4 col-xs-4">
+                    <img id="logo" src="images/logo.png">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10">
                     <form action="http://www.google.com/cse" id="searchForm" >
                         <input type="text" id="search-box" class="form-control" placeholder="Search" name="q">
                     </form>
@@ -45,11 +53,12 @@
     </div> <!--End header-->
 
     <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-            <h1>Google News</h1>
-            <hr>
+        <div class="col-md-offset-3 col-md-6 col-sm-offset-1 col-sm-10">
+
 
             <div id="rss-content">
+
+                <h3 id="rss-title"></h3>
 
             </div>
 
@@ -57,6 +66,58 @@
     </div>
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">rTab Settings</h4>
+            </div>
+            <div class="modal-body">
+
+                <form>
+
+                    <div class="form-group">
+                        <label for="feedURL">Feed URL</label>
+                        <input id="feedURL" class="form-control" placeholder="ex: https://news.google.com/?output=rss">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedItems">Feed Items</label>
+                        <select id="feedItems" class="form-control">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>15</option>
+                            <option>All</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Show Images
+                        </label>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Show Description
+                        </label>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Save & Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 
 
