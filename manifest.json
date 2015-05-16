@@ -7,11 +7,14 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://news.google.com; object-src 'self'",
   "description": "An RSS Feed Reader for your new tab page",
   "manifest_version": 2,
   "name": "rTab",
-  "permissions": [],
+  "permissions": [
+    "tabs",
+    "http://news.google.com/*"
+  ],
   "short_name": "rTab",
   "version": "0.0.1"
 }

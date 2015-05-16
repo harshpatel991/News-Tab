@@ -1,3 +1,20 @@
 .header {
 
+    background-image: url(../images/now.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 5%;
+    color: #ffffff;
+    background-position: 100% 800%;
+
+}
+
+#search-box {
+    color: #333;
+}
+
+#logo {
+    max-width: 100%;
+    max-height: 100%;
 }

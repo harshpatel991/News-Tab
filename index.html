@@ -8,8 +8,15 @@
     <title>rTab</title>
 
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+    <script type="text/javascript" src="js/jfeed.js"></script>
+    <script type="text/javascript" src="js/jfeeditem.js"></script>
+    <script type="text/javascript" src="js/jatom.js"></script>
+    <script type="text/javascript" src="js/jrss.js"></script>
+
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/background.js"></script>
+
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href='css/custom.css'>
@@ -18,8 +25,33 @@
 <body>
 <div class="container-fluid">
 
-    <div class="row">
+    <div class="row"> <!--header-->
         <div class="col-xs-12 header">
+            <row>
+                <div class="col-md-offset-5 col-md-2 col-sm-offset-4 col-sm-4 col-xs-offset-3 col-xs-6">
+                    <img id="logo" src="images/logo.png">
+                </div>
+            </row>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <form action="http://www.google.com/cse" id="searchForm" >
+                        <input type="text" id="search-box" class="form-control" placeholder="Search" name="q">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div> <!--End header-->
+
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <h1>Google News</h1>
+            <hr>
+
+            <div id="rss-content">
+
+            </div>
 
         </div>
     </div>
