@@ -13,7 +13,8 @@
   "name": "rTab",
   "permissions": [
     "tabs",
-    "http://news.google.com/*"
+    "http://*.com/*",
+    "storage"
   ],
   "short_name": "rTab",
   "version": "0.0.1"
