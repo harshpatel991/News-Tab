@@ -1,19 +1,15 @@
 {
-  "app": {
-    "launch": {
-      "local_path": "index.html"
-    }
-  },
+
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "content_security_policy": "script-src 'self' https://news.google.com; object-src 'self'",
-  "description": "An RSS Feed Reader for your new tab page",
+  "content_security_policy": "script-src 'self' https://news.google.com/; object-src 'self'",
+  "description": "An Google Now themed top news stories reader for your new tab page",
   "manifest_version": 2,
   "name": "News Tab",
   "permissions": [
-    "tabs",
-    "http://news.google.com/*",
+
+    "https://news.google.com/",
     "storage"
   ],
   "short_name": "News Tab",

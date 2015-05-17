@@ -1,4 +1,6 @@
-var settings =  {FEED_URL: "http://news.google.com/?output=rss", FEED_ITEMS_COUNT: 10, SHOW_IMAGES: true, SHOW_DESCRIPTION: true};
+var FEED_URL = 'https://news.google.com/?output=rss';
+
+var settings =  {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: 10, SHOW_IMAGES: true, SHOW_DESCRIPTION: true};
 
 $(document).ready(function() {
 	var _appendElement = '<input type="hidden" name="cx" value="013056768840040662406:xjc9ebnmjlk">'
@@ -21,7 +23,7 @@ $(document).ready(function() {
 });
 
 function saveSettingsItems() {
-	var feedUrl = 'http://news.google.com/?output=rss';
+
 	var feedItemsCount = $('#feedItemsCount').val();
 	var showImages = $('#showImages').is(':checked');
 	var showDescription = $('#showDescription').is(':checked');
@@ -29,7 +31,7 @@ function saveSettingsItems() {
 	console.log("About to save: " + feedItemsCount);
 	console.log("About to save: " + showImages);
 
-	settings = {FEED_URL: feedUrl, FEED_ITEMS_COUNT: feedItemsCount, SHOW_IMAGES: showImages , SHOW_DESCRIPTION: showDescription};
+	settings = {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: feedItemsCount, SHOW_IMAGES: showImages , SHOW_DESCRIPTION: showDescription};
 	clearFeed();
 	displayFeed();
 
@@ -54,7 +56,7 @@ function clearFeed() {
 
 function displayFeed () {
 	jQuery.getFeed({
-		url: settings.FEED_URL,
+		url: FEED_URL,
 		success: function(feed) {
 			$('#rss-content').append('<h3 id="rss-title">' + feed.title + '</h3><hr>');
 
