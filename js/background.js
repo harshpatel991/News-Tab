@@ -56,7 +56,7 @@ function displayFeed () {
 	jQuery.getFeed({
 		url: settings.FEED_URL,
 		success: function(feed) {
-			$('#rss-content').append('<h3 id="rss-title">' + feed.title + '</h3>');
+			$('#rss-content').append('<h3 id="rss-title">' + feed.title + '</h3><hr>');
 
 			for (var i = 0; (i<feed.items.length) && (i<settings.FEED_ITEMS_COUNT); i++) {
 				var entry = feed.items[i];
