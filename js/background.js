@@ -63,8 +63,6 @@ function displayFeed () {
 			for (var i = 0; (i<feed.items.length) && (i<settings.FEED_ITEMS_COUNT); i++) {
 				var entry = feed.items[i];
 
-				console.log(entry.description);
-
 				var dirtyDescription = $.parseHTML(entry.description);
 
 				var image = '';

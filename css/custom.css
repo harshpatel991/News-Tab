@@ -5,13 +5,11 @@ body {
 .header {
 
     background-image: url(../images/now.jpg);
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding: 1%;
     color: #ffffff;
-    background-position: 100% 1500%;
-
 }
 
 #search-box {
@@ -33,6 +31,10 @@ body {
 
 .news-item {
     padding: 0px 0px;
+}
+
+.news-item a{
+  color: #000000;
 }
 
 #rss-content {
