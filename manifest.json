@@ -4,9 +4,9 @@
     "newtab": "index.html"
   },
   "content_security_policy": "script-src 'self' https://news.google.com/; object-src 'self'",
-  "description": "An Google Now themed top news stories reader for your new tab page",
+  "description": "An Google Now themed top news stories reader for your New Tab page",
   "manifest_version": 2,
-  "name": "News Tab",
+  "name": "News Tab - New Tab Page Replacement",
   "permissions": [
 
     "https://news.google.com/",
