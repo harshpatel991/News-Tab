@@ -18,6 +18,6 @@
   ],
   "short_name": "News Tab",
   "version": "0.0.1",
-  "icons": { "16": "icon-16.png",
-    "128": "icon-128.png" }
+  "icons": { "16": "images/icon-16.png",
+    "128": "images/icon-128.png" }
 }
