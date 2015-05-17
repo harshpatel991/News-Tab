@@ -13,9 +13,11 @@
   "name": "News Tab",
   "permissions": [
     "tabs",
-    "http://*.com/*",
+    "http://news.google.com/*",
     "storage"
   ],
   "short_name": "News Tab",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "icons": { "16": "icon-16.png",
+    "128": "icon-128.png" }
 }
