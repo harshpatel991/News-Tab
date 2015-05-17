@@ -10,12 +10,12 @@
   "content_security_policy": "script-src 'self' https://news.google.com; object-src 'self'",
   "description": "An RSS Feed Reader for your new tab page",
   "manifest_version": 2,
-  "name": "rTab",
+  "name": "News Tab",
   "permissions": [
     "tabs",
     "http://*.com/*",
     "storage"
   ],
-  "short_name": "rTab",
+  "short_name": "News Tab",
   "version": "0.0.1"
 }
