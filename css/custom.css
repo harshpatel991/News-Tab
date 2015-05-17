@@ -14,8 +14,14 @@ body {
 
 #search-box {
     color: #333;
-    margin: 2% 0%;
+    margin: 10px 0%;
     background-color: rgba(.1, .1, .1, .1);
+}
+
+#search-button {
+    margin: 10px 0%;
+    background-color: rgb(73, 138, 243);
+    width: 100%;
 }
 
 #logo {

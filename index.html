@@ -44,11 +44,19 @@
             </div>
 
             <div class="row">
-                <div class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10">
+
                     <form action="http://www.google.com/cse" id="searchForm" >
-                        <input type="text" id="search-box" class="form-control" placeholder="Search" name="q">
+                        <div class="col-md-offset-2 col-md-7 col-sm-offset-1 col-sm-8 col-xs-10">
+                            <div class="form-group has-feedback">
+                                <input type="text" id="search-box" class="form-control" placeholder="Search" name="q">
+                            </div>
+                        </div>
+
+                        <div class="col-md-1 col-sm-2 col-xs-2">
+                            <button id="search-button" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span> </button>
+                        </div>
                     </form>
-                </div>
+
             </div>
 
         </div>
@@ -88,10 +96,9 @@
                     <div class="form-group">
                         <label for="feedItemsCount">Feed Items</label>
                         <select id="feedItemsCount" class="form-control">
+                            <option value="1">1</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="2147483647">All</option>
                         </select>
                     </div>
 
