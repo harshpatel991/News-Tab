@@ -42,8 +42,6 @@ function saveSettingsItems() {
 }
 
 function updateSettingsItems() {
-	console.log(settings.SHOW_DESCRIPTION);
-
 	$('#feedURL').val(settings.FEED_URL);
 	$('#feedItemsCount').val(settings.FEED_ITEMS_COUNT);
 	$('#showImages').prop('checked', settings.SHOW_IMAGES);
@@ -63,11 +61,13 @@ function displayFeed () {
 			for (var i = 0; (i<feed.items.length) && (i<settings.FEED_ITEMS_COUNT); i++) {
 				var entry = feed.items[i];
 
+				entry.description = entry.description.replace(new RegExp('<img src="//', 'g'), '<img src="http://');
+
 				var dirtyDescription = $.parseHTML(entry.description);
 
 				var image = '';
 				if(settings.SHOW_IMAGES) {
-					image = '<img class="media-object" src="' + 'http://' + dirtyDescription[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].src.slice(19) + '" alt="Image">';
+					image = '<img class="media-object" src="' + dirtyDescription[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].src + '" alt="Image">';
 				}
 
 				var title = entry.title;
