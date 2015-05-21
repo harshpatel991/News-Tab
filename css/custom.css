@@ -13,12 +13,16 @@ body {
 }
 
 #search-box {
+    padding: 20px 15px;
+    font-size: 1.5em;
     color: #333;
     margin: 10px 0%;
     background-color: rgba(.1, .1, .1, .1);
 }
 
 #search-button {
+
+    font-size: 1.5em;
     margin: 10px 0%;
     background-color: rgb(73, 138, 243);
     width: 100%;
@@ -31,7 +35,7 @@ body {
 }
 
 .item-description {
-    font-size: .7em;
+    font-size: 1.4vmin;
 
 }
 
@@ -42,6 +46,10 @@ body {
 
 .news-item a{
   color: #000000;
+}
+
+h5 {
+    font-size: 2.5vmin;
 }
 
 #rss-content {

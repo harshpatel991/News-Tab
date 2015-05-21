@@ -28,8 +28,6 @@ function saveSettingsItems() {
 	var showImages = $('#showImages').is(':checked');
 	var showDescription = $('#showDescription').is(':checked');
 
-	console.log("About to save: " + feedItemsCount);
-	console.log("About to save: " + showImages);
 
 	settings = {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: feedItemsCount, SHOW_IMAGES: showImages , SHOW_DESCRIPTION: showDescription};
 	clearFeed();
