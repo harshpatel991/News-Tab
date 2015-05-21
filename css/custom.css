@@ -49,7 +49,11 @@ body {
 }
 
 h5 {
-    font-size: 2.5vmin;
+    font-size: 2.2vmin;
+}
+
+#rss-title {
+    font-size: 2.6vmin;
 }
 
 #rss-content {
