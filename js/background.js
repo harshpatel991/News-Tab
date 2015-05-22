@@ -67,7 +67,7 @@ function displayFeed () {
 
 				var image = '';
 				if(settings.SHOW_IMAGES) {
-					image = '<img class="media-object" src="' + dirtyDescription[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].src + '" alt="Image">';
+					image = '<img class="media-object" src="' + $(dirtyDescription).find('img').attr('src') + '" alt="Image">';
 				}
 
 				var title = entry.title;
