@@ -1,4 +1,4 @@
-var FEED_URL = 'https://news.google.com/?output=rss';
+var FEED_URL = 'http://cors.io/?u=http://news.google.com/?output=rss';
 
 var settings =  {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: 10, SHOW_IMAGES: true, SHOW_DESCRIPTION: true};
 
