@@ -1,3 +1,7 @@
+/**
+ * @param object - A dictionary of default values that are not in storage
+ * @param callback
+ */
 function getObject(object, callback) {
 	chrome.storage.sync.get(object, callback);
 }
