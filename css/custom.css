@@ -1,31 +1,50 @@
 body {
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(248, 246, 246);
     font-family: 'Roboto', sans-serif;
 }
 .header {
-
-    background-image: url(../images/now.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     padding: 1%;
     color: #ffffff;
 }
 
-#search-box {
+.search-box-common {
+    background-color: rgba(35, 35, 35, 0.48);
     padding: 20px 15px;
-    font-size: 1.5em;
-    color: #333;
+
+    color: #fff;
     margin: 10px 0%;
-    background-color: rgba(.1, .1, .1, .1);
 }
 
-#search-button {
+.search-box-common::-webkit-input-placeholder {  color: rgba(255, 255, 255, 0.58); }
+.search-box-common:-moz-placeholder {  color: rgba(255, 255, 255, 0.58);  }
+.search-box-common::-moz-placeholder {  color: rgba(255, 255, 255, 0.58);  }
+.search-box-common:-ms-input-placeholder {  color: rgba(255, 255, 255, 0.58);  }
 
-    font-size: 1.5em;
-    margin: 10px 0%;
-    background-color: rgb(73, 138, 243);
-    width: 100%;
+@media (min-width: 0px) {
+    #search-box {
+        font-size: 1em;
+    }
+    #search-button {
+        font-size: 1.2em;
+        margin: 10px 0%;
+        background-color: rgb(73, 138, 243);
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    #search-box {
+        font-size: 1.5em;
+    }
+    #search-button {
+        font-size: 1.5em;
+        margin: 10px 0%;
+        background-color: rgb(73, 138, 243);
+        width: 100%;
+    }
 }
 
 #logo {
@@ -34,9 +53,16 @@ body {
     margin-top: 10%
 }
 
-.item-description {
-    font-size: 1.4vmin;
+@media (min-width: 0px) {
+    .item-description {
+        font-size: 10px;
+    }
+}
 
+@media (min-width: 992px) {
+    .item-description {
+        font-size: 12px;
+    }
 }
 
 .news-item {
@@ -48,24 +74,29 @@ body {
   color: #000000;
 }
 
-h5 {
-    font-size: 2.2vmin;
+@media (min-width: 0px) {
+    #rss-title {
+        font-size: 16px;
+    }
 }
 
-#rss-title {
-    font-size: 2.6vmin;
+@media (min-width: 992px) {
+    #rss-title {
+        font-size: 20px;
+    }
 }
 
 #rss-content {
-    margin-top: 20px;
     padding-top: 1px;
     padding-left: 20px;
     padding-right: 20px;
     background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #settings-button {
     background-color: rgba(255, 255, 255, 0);
     border:none;
     color: rgba(0, 0, 0, .3);
+    padding-top: 10px;
 }
