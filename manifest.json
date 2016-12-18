@@ -10,7 +10,9 @@
   "permissions": [
     "http://cors.io/",
     "https://news.google.com/",
-    "storage"
+    "storage",
+    "topSites",
+    "chrome://favicon/"
   ],
   "short_name": "News Tab",
   "version": "0.0.4",

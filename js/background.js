@@ -1,7 +1,7 @@
 // var FEED_URL = 'http://cors.io/?u=http://news.google.com/?output=rss';
 var FEED_URL = 'https://news.google.com/?output=rss';
 
-var settings =  {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: 10, THEME: 'ocean', SHOW_IMAGES: true, SHOW_DESCRIPTION: true};
+var settings =  {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: 10, THEME: 'ocean', SHOW_IMAGES: true, SHOW_DESCRIPTION: true, SHOW_MOST_VISITED: true};
 
 var IMAGE_DIRECTORY = '../images/themes/';
 var THEME_IMAGES = {ocean: 'ocean.jpg', brick: 'brick.jpg', farm: 'farm.jpg', mountain: 'mountain.jpg', beach: 'beach.jpg', beach2: 'beach2.jpg', waterfall: 'waterfall.jpg'};
@@ -13,6 +13,7 @@ $(document).ready(function() {
 	getObject(settings,
 		function(data) {
 			settings = data;
+			loadAndDisplayMostVisited();
 			updateSettingsItems();
 			setTheme();
 			loadAndDisplayFeed();
@@ -32,11 +33,13 @@ function saveSettingsItems() {
 	var theme = $('#theme').val();
 	var showImages = $('#showImages').is(':checked');
 	var showDescription = $('#showDescription').is(':checked');
+	var showMostVisited = $('#showMostVisited').is(':checked');
 
-	settings = {FEED_URL: feedURL, FEED_ITEMS_COUNT: feedItemsCount, THEME: theme, SHOW_IMAGES: showImages , SHOW_DESCRIPTION: showDescription};
+	settings = {FEED_URL: feedURL, FEED_ITEMS_COUNT: feedItemsCount, THEME: theme, SHOW_IMAGES: showImages , SHOW_DESCRIPTION: showDescription, SHOW_MOST_VISITED: showMostVisited};
 	clearFeed();
-	loadAndDisplayFeed();
 	setTheme();
+	loadAndDisplayFeed();
+	loadAndDisplayMostVisited();
 
 	setObject(settings,
 		function() {
@@ -49,19 +52,41 @@ function saveSettingsItems() {
 function setTheme() {
 	var themeImage = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
 	$('#header').css('background-image', 'url(' + themeImage + ')');
-	console.log(themeImage);
 }
 
+/**
+ * Loads settings into the HTML form
+ */
 function updateSettingsItems() {
 	$('#feedURL').val(settings.FEED_URL);
 	$('#theme').val(settings.THEME);
 	$('#feedItemsCount').val(settings.FEED_ITEMS_COUNT);
 	$('#showImages').prop('checked', settings.SHOW_IMAGES);
 	$('#showDescription').prop('checked', settings.SHOW_DESCRIPTION);
+	$('#showMostVisited').prop('checked', settings.SHOW_MOST_VISITED);
 }
 
 function clearFeed() {
 	$('#rss-content').empty();
+}
+
+function loadAndDisplayMostVisited() {
+	if(settings.SHOW_MOST_VISITED) {
+		$('#most-visited-row').show();
+		chrome.topSites.get(function (data) {
+			$('.most-visited-site').each(
+				function (index) {
+					if(data[index] != null) {
+						$(this).html('<a href="' + data[index].url + '">' +
+							'<img src="chrome://favicon/' + data[index].url + '"> ' + data[index].title +
+							'</a>');
+					}
+				}
+			);
+		});
+	} else {
+		$('#most-visited-row').hide();
+	}
 }
 
 function loadAndDisplayFeed () {

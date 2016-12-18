@@ -10,6 +10,13 @@ body {
     color: #ffffff;
 }
 
+.most-visited-site {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0px;
+}
+
 .search-box-common {
     background-color: rgba(35, 35, 35, 0.48);
     padding: 20px 15px;
