@@ -1,18 +1,16 @@
 // var FEED_URL = 'http://cors.io/?u=http://news.google.com/?output=rss';
 var FEED_URL = 'https://news.google.com/?output=rss';
 
-var settings =  {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: 10, THEME: 'ocean', SHOW_IMAGES: true, SHOW_DESCRIPTION: true, SHOW_MOST_VISITED: true};
+var settings =  {FEED_URL: FEED_URL, FEED_ITEMS_COUNT: 10, THEME: 'ocean', SHOW_IMAGES: true, SHOW_DESCRIPTION: true, SHOW_MOST_VISITED: true, DARK_MODE: false};
 
 var IMAGE_DIRECTORY = '../images/themes/';
 var THEME_IMAGES = {ocean: 'ocean.jpg', brick: 'brick.jpg', farm: 'farm.jpg', mountain: 'mountain.jpg', beach: 'beach.jpg', beach2: 'beach2.jpg', waterfall: 'waterfall.jpg'};
 
 $(document).ready(function() {
-	var _appendElement = '<input type="hidden" name="cx" value="013056768840040662406:xjc9ebnmjlk">';
-	$('#searchForm').append(_appendElement);
-
 	getObject(settings,
 		function(data) {
 			settings = data;
+			setDarkMode();
 			loadAndDisplayMostVisited();
 			updateSettingsItems();
 			setTheme();
@@ -34,8 +32,10 @@ function saveSettingsItems() {
 	var showImages = $('#showImages').is(':checked');
 	var showDescription = $('#showDescription').is(':checked');
 	var showMostVisited = $('#showMostVisited').is(':checked');
+	var darkMode = $('#darkMode').is(':checked');
 
-	settings = {FEED_URL: feedURL, FEED_ITEMS_COUNT: feedItemsCount, THEME: theme, SHOW_IMAGES: showImages , SHOW_DESCRIPTION: showDescription, SHOW_MOST_VISITED: showMostVisited};
+	settings = {FEED_URL: feedURL, FEED_ITEMS_COUNT: feedItemsCount, THEME: theme, SHOW_IMAGES: showImages , SHOW_DESCRIPTION: showDescription, SHOW_MOST_VISITED: showMostVisited, DARK_MODE: darkMode};
+	setDarkMode();
 	clearFeed();
 	setTheme();
 	loadAndDisplayFeed();
@@ -47,6 +47,14 @@ function saveSettingsItems() {
 			$('#myModal').modal('toggle');
 		}
 	);
+}
+
+function setDarkMode() {
+	if(settings.DARK_MODE) {
+		$('body').addClass('dark-mode');
+	} else {
+		$('body').removeClass('dark-mode');
+	}
 }
 
 function setTheme() {
@@ -64,6 +72,7 @@ function updateSettingsItems() {
 	$('#showImages').prop('checked', settings.SHOW_IMAGES);
 	$('#showDescription').prop('checked', settings.SHOW_DESCRIPTION);
 	$('#showMostVisited').prop('checked', settings.SHOW_MOST_VISITED);
+	$('#darkMode').prop('checked', settings.DARK_MODE);
 }
 
 function clearFeed() {

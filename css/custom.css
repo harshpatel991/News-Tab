@@ -2,6 +2,15 @@ body {
     background-color: rgb(248, 246, 246);
     font-family: 'Roboto', sans-serif;
 }
+
+.dark-mode {
+    background-color: rgb(40, 43, 51);
+}
+
+.dark-mode hr {
+    border-top: 1px solid #3a3838;
+}
+
 .header {
     background-size: cover;
     background-position: center;
@@ -60,6 +69,15 @@ body {
     margin-top: 10%
 }
 
+.dark-mode .panel-default {
+    background-color: #3a414a;
+    border-color: #3a414a;
+}
+
+.dark-mode .panel-default a {
+    color: #959ba0;
+}
+
 @media (min-width: 0px) {
     .item-description {
         font-size: 10px;
@@ -72,13 +90,21 @@ body {
     }
 }
 
+.dark-mode .item-description {
+    color: #959ba0;
+}
+
 .news-item {
     margin-top: 0px;
     padding: 0px 0px;
 }
 
 .news-item a{
-  color: #000000;
+  color: #333;
+}
+
+.dark-mode .news-item a {
+    color: #e7e9ea;
 }
 
 @media (min-width: 0px) {
@@ -93,6 +119,10 @@ body {
     }
 }
 
+.dark-mode #rss-title {
+    color: #e7e9ea;
+}
+
 #rss-content {
     padding-top: 1px;
     padding-left: 20px;
@@ -101,9 +131,17 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.dark-mode #rss-content {
+    background-color: #3a414a;
+}
+
 #settings-button {
     background-color: rgba(255, 255, 255, 0);
     border:none;
     color: rgba(0, 0, 0, .3);
     padding-top: 10px;
+}
+
+.dark-mode #settings-button {
+    color: rgba(255, 255, 255, .3);
 }
