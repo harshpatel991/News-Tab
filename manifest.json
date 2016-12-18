@@ -14,7 +14,7 @@
     "chrome://favicon/"
   ],
   "short_name": "News Tab",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "icons": { "16": "images/icon-16.png",
     "128": "images/icon-128.png" }
 }
