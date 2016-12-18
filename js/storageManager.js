@@ -1,3 +1,17 @@
+function saveToCache(feed) {
+	setLargeObject("feedCache", JSON.stringify(feed),
+		function() {}
+	);
+}
+
+function readFromCache(callback) {
+	getLargeObject("feedCache",
+		function(data) {
+			callback(JSON.parse(data));
+		}
+	);
+}
+
 /**
  * @param object - A dictionary of default values that are not in storage
  * @param callback

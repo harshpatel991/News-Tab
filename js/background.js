@@ -46,20 +46,6 @@ function saveSettingsItems() {
 	);
 }
 
-function saveToCache(feed) {
-	setLargeObject("feedCache", JSON.stringify(feed),
-		function() {}
-	);
-}
-
-function readFromCache(callback) {
-	getLargeObject("feedCache",
-		function(data) {
-			callback(JSON.parse(data));
-		}
-	);
-}
-
 function setTheme() {
 	var themeImage = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
 	$('#header').css('background-image', 'url(' + themeImage + ')');
