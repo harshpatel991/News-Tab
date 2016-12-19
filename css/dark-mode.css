@@ -1,0 +1,36 @@
+.dark-mode {
+    background-color: rgb(40, 43, 51);
+}
+
+.dark-mode hr {
+    border-top: 1px solid #3a3838;
+}
+
+.dark-mode .panel-default {
+    background-color: #3a414a;
+    border-color: #3a414a;
+}
+
+.dark-mode .panel-default a {
+    color: #959ba0;
+}
+
+.dark-mode .item-description {
+    color: #959ba0;
+}
+
+.dark-mode .news-item a {
+    color: #e7e9ea;
+}
+
+.dark-mode #rss-title {
+    color: #e7e9ea;
+}
+
+.dark-mode #rss-content {
+    background-color: #3a414a;
+}
+
+.dark-mode #settings-button {
+    color: rgba(255, 255, 255, .3);
+}

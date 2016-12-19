@@ -3,12 +3,14 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "content_security_policy": "script-src 'self' https://cors.io/; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://query.yahooapis.com; object-src 'self'",
+
   "description": "An Google Now themed top news stories reader for your New Tab page",
   "manifest_version": 2,
   "name": "News Tab - New Tab Page Replacement",
   "permissions": [
     "https://news.google.com/",
+    "https://query.yahooapis.com/",
     "storage",
     "topSites",
     "chrome://favicon/"
