@@ -1,3 +1,9 @@
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+}
+
 body {
     background-color: rgb(248, 246, 246);
     font-family: 'Roboto', sans-serif;

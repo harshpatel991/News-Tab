@@ -3,7 +3,7 @@ function loadAndDisplayWeather() {
 }
 
 function setWeather(weather) {
-	$("#weather").html('<h3 style="margin:0"><i class="icon-'+weather.code+'" id="weather-icon"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h3>');
+	$("#weather").html('<h3 style="margin:0"><i class="icon-'+weather.code+'" id="weather-icon"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h3>').fadeIn(300);
 }
 
 function getWeatherFromOrigin() {

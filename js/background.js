@@ -41,7 +41,7 @@ function clearFeed() {
 
 function loadAndDisplayMostVisited() {
 	if(settings.SHOW_MOST_VISITED) {
-		$('#most-visited-row').show();
+		$('#most-visited-row').fadeIn(300);
 		chrome.topSites.get(function (data) {
 			$('.most-visited-site').each(
 				function (index) {
@@ -104,6 +104,6 @@ function displayFeed(feed) {
 		newsItemTemplate = newsItemTemplate.replace("ITEM-LINK", link);
 		newsItemTemplate = newsItemTemplate.replace("ITEM-DESCRIPTION", description);
 
-		$('#rss-content').append(newsItemTemplate);
+		$('#rss-content').append(newsItemTemplate).fadeIn(300);
 	}
 }
