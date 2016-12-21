@@ -1,10 +1,14 @@
 function getFromTimedCache(key, maxAge, callback, callbackIfNotCached) {
 	getLargeObject(key, function (timedCacheItemString) {
-		var timedCacheItem = JSON.parse(timedCacheItemString);
-		if ( timedCacheItem == {} || timedCacheItem == "" || timedCacheItem.data == "" || (Date.now() - timedCacheItem.addTime) > maxAge ) {
-			callbackIfNotCached();
+		if (timedCacheItemString != null && timedCacheItemString != "") {
+			var timedCacheItem = JSON.parse(timedCacheItemString);
+			if (timedCacheItem == {} || timedCacheItem == "" || timedCacheItem.data == "" || (Date.now() - timedCacheItem.addTime) > maxAge) {
+				callbackIfNotCached();
+			} else {
+				callback(timedCacheItem.data);
+			}
 		} else {
-			callback(timedCacheItem.data);
+			callbackIfNotCached();
 		}
 	});
 }
@@ -15,20 +19,6 @@ function addToTimedCache(key, value, callback) {
 	timedCacheItem.data = value;
 	
 	setLargeObject(key, JSON.stringify(timedCacheItem), callback);
-}
-
-function saveToCache(feed) {
-	setLargeObject("feedCache", JSON.stringify(feed),
-		function() {}
-	);
-}
-
-function readFromCache(callback) {
-	getLargeObject("feedCache",
-		function(data) {
-			callback(JSON.parse(data));
-		}
-	);
 }
 
 /**

@@ -1,6 +1,10 @@
 var IMAGE_DIRECTORY = '../images/themes/';
 var THEME_IMAGES = {ocean: 'ocean.jpg', brick: 'brick.jpg', farm: 'farm.jpg', mountain: 'mountain.jpg', beach: 'beach.jpg', beach2: 'beach2.jpg', waterfall: 'waterfall.jpg'};
 
+var HOURS_24 = 86400000;
+var MINUTES_30 = 1800000;
+var FEED_CACHE_KEY = "feed";
+
 $(document).ready(function() {
 	getObject(settings,
 		function(data) {
@@ -59,19 +63,28 @@ function loadAndDisplayMostVisited() {
 }
 
 function loadAndDisplayFeed () {
+	getFromTimedCache(FEED_CACHE_KEY, MINUTES_30, displayFeed, loadFeedFromOrigin);
+}
+
+function loadFeedFromOrigin () {
 	jQuery.getFeed({
 		url: settings.FEED_URL,
 		success: function(feed) {
 			if (feed.items.length == 0) {
-				readFromCache(function(feed) {
-					displayFeed(feed);
-				} );
+				retryLoadFeedOrFail();
 			} else {
-				saveToCache(feed);
-				displayFeed(feed);
+				addToTimedCache(FEED_CACHE_KEY, feed);
+				displayFeed(feed); //TODO: could optimize this by only caching the elements that are going to be displayed
 			}
+		},
+		error: function() {
+			retryLoadFeedOrFail();
 		}
 	});
+}
+
+function retryLoadFeedOrFail() {
+	getFromTimedCache(FEED_CACHE_KEY, HOURS_24, displayFeed, function() {}); //try again with a larger expiration time, if that fails, stop
 }
 
 function displayFeed(feed) {
