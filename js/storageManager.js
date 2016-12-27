@@ -38,6 +38,22 @@ function getCacheKey(key, i) {
 	return (i === 0) ? key : key + "_" + i;
 }
 
+function deleteLargeObject(key) {
+	//get everything from storage
+	var toRemove = [];
+
+	chrome.storage.sync.get(null, function(items) {
+		var i;
+		for(i=0; i<chrome.storage.sync.MAX_ITEMS; i++) {
+			if(items[getCacheKey(key, i)] === undefined) {
+				break;
+			}
+			toRemove.push(getCacheKey(key, i));
+		}
+		chrome.storage.sync.remove(toRemove, function(removed) {});
+	});
+}
+
 /**
  * Allows to save strings longer than QUOTA_BYTES_PER_ITEM in chrome.storage.sync by splitting them into smaller parts.
  * Please note that you still can't save more than QUOTA_BYTES.

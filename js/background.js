@@ -6,6 +6,7 @@ var MINUTES_30 = 1800000;
 var FEED_CACHE_KEY = "feed";
 
 $(document).ready(function() {
+	deleteLargeObject("feedCache"); //clear out old feedCache, so there is room for new cache
 	getObject(settings,
 		function(data) {
 			settings = data;
