@@ -3,7 +3,7 @@ var FEED_URL = 'https://news.google.com/?output=rss';
 var settings =  { //default settings
 	FEED_URL: FEED_URL,
 	FEED_ITEMS_COUNT: 10,
-	THEME: 'ocean',
+	THEME: 'beach3',
 	SHOW_IMAGES: true,
 	SHOW_DESCRIPTION: true,
 	SHOW_MOST_VISITED: true,
