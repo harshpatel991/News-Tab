@@ -69,7 +69,7 @@ function loadAndDisplayFeed () {
 
 function loadFeedFromOrigin () {
 	jQuery.getFeed({
-		url: settings.FEED_URL,
+		url: getFeedURL(settings.GOOGLE_TOPIC, settings.GOOGLE_REGION),
 		success: function(feed) {
 			if (feed.items.length == 0) {
 				retryLoadFeedOrFail();
@@ -100,7 +100,7 @@ function displayFeed(feed) {
 
 		var image = '';
 		if(settings.SHOW_IMAGES) {
-			image = '<img class="media-object" src="' + $(dirtyDescription).find('img').attr('src') + '" alt="Image">';
+			image = '<img class="media-object" style="max-width: 64px; max-height: 64px;" src="' + $(dirtyDescription).find('img').first().attr('src') + '" alt="Image">';
 		}
 
 		var title = entry.title;
@@ -108,7 +108,7 @@ function displayFeed(feed) {
 
 		var description = '';
 		if(settings.SHOW_DESCRIPTION) {
-			description = dirtyDescription[0].childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[2].childNodes[4].innerHTML;
+			description = findDescription(dirtyDescription);
 		}
 
 		var newsItemTemplate = '<div class="media news-item"> <div class="media-left"> <a href="ITEM-LINK"> ITEM-IMAGE </a> </div> <div class="media-body"> <h5 class="media-heading"><a href="ITEM-LINK">ITEM-TITLE</a></h5><div class="item-description"> ITEM-DESCRIPTION </div></div> </div><hr>';
@@ -120,4 +120,34 @@ function displayFeed(feed) {
 
 		$('#rss-content').append(newsItemTemplate).fadeIn(300);
 	}
+}
+
+function findDescription(nodesArray) {
+	var description = '';
+	for (var i = 0; (i<nodesArray.length); i++) {
+		var thisChildDescription = recursiveFindDescription(nodesArray[i]);
+
+		if (thisChildDescription.length > description.length) {
+			description = thisChildDescription;
+		}
+	}
+	return description.substring(0,250) + "...";
+}
+
+function recursiveFindDescription(currentNode) {
+	var description = '';
+
+	for(var i = 0, count = currentNode.childNodes.length; i < count; i++) {
+		var thisChildDescription = recursiveFindDescription(currentNode.childNodes[i]);
+
+		if (thisChildDescription.length > description.length) {
+			description = thisChildDescription;
+		}
+	}
+
+	if (currentNode.length > description.length) {
+		description = currentNode.data;
+	}
+
+	return description;
 }

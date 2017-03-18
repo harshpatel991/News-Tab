@@ -21,6 +21,7 @@
     <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript" src="js/background.js"></script>
+    <script type="text/javascript" src="js/googleNewsUrlBuilder.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href='css/weather.css'>
@@ -127,6 +128,19 @@
             <div class="modal-body">
 
                 <form>
+                    <div class="form-group">
+                        <label for="googleTopic">Feed Topic</label>
+                        <select id="googleTopic" class="form-control">
+                            <!--Items get populated here-->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="googleRegion">Feed Region</label>
+                        <select id="googleRegion" class="form-control">
+                            <!--Items get populated here-->
+                        </select>
+                    </div>
 
                     <div class="form-group" style="display: none;">
                         <label for="feedURL">Feed URL (default - https://news.google.com/?output=rss)</label>
