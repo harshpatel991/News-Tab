@@ -1,5 +1,5 @@
 var IMAGE_DIRECTORY = '../images/themes/';
-var THEME_IMAGES = {aurora: 'aurora.jpg', ocean: 'ocean.jpg', brick: 'brick.jpg', farm: 'farm.jpg', mountain: 'mountain.jpg', beach: 'beach.jpg', beach2: 'beach2.jpg', beach3: 'beach3.jpg', seaside: 'seaside.jpg', waterfall: 'waterfall.jpg'};
+var THEME_IMAGES = {aurora: 'aurora.jpg', canyon: 'canyon.jpg', ocean: 'ocean.jpg', brick: 'brick.jpg', farm: 'farm.jpg', mountain: 'mountain.jpg', beach: 'beach.jpg', beach2: 'beach2.jpg', beach3: 'beach3.jpg', islands: 'islands.jpg', seaside: 'seaside.jpg', waterfall: 'waterfall.jpg'};
 
 var HOURS_24 = 86400000;
 var MINUTES_30 = 1800000;
