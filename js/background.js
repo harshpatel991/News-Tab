@@ -11,11 +11,11 @@ $(document).ready(function() {
 		function(data) {
 			settings = data;
 			setDarkMode();
-			loadAndDisplayMostVisited();
-			updateSettingsItems();
 			setTheme();
 			loadAndDisplayFeed();
+			loadAndDisplayMostVisited();
 			loadAndDisplayWeather();
+			updateSettingsItems();
 		}
 	);
 
