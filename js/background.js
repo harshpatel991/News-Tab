@@ -37,9 +37,8 @@ function setDarkMode() {
 function setTheme() {
 	var image = new Image();
 	image.onload = function () {
-		$('#header').css('background-image', 'url(' + this.src + ')');
-		$('#header').css({ opacity: 1 });
-	}
+		$('#header').css( { 'background-image': 'url(' + this.src + ')', opacity: 1  });
+	};
 	image.src = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
 }
 
