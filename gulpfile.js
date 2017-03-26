@@ -39,7 +39,7 @@ gulp.task('cssFiles', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['scripts', 'cssFiles'], function() {
     gulp.watch(scripts.concat(cssFiles), ['default'])
 });
 

@@ -49,13 +49,13 @@ function clearFeed() {
 
 function loadAndDisplayMostVisited() {
 	if(settings.SHOW_MOST_VISITED) {
-		$('#most-visited-row').fadeIn(300);
+		$('#most-visited-row').fadeIn(250);
 		chrome.topSites.get(function (data) {
 			$('.most-visited-site').each(
 				function (index) {
 					if(data[index] != null) {
 						$(this).html('<a href="' + data[index].url + '">' +
-							'<img src="chrome://favicon/' + data[index].url + '"> ' + data[index].title +
+							 '<img width="15px" height="15px" src="chrome://favicon/' + data[index].url + '"> ' + data[index].title +
 							'</a>');
 					}
 				}
@@ -93,7 +93,7 @@ function retryLoadFeedOrFail() {
 }
 
 function displayParsedFeed(parsedFeed) {
-	$('#rss-content').append(parsedFeed).fadeIn(300);
+	$('#rss-content').append(parsedFeed).fadeIn(250);
 }
 
 function parseFeed(feed) {
@@ -109,7 +109,7 @@ function parseFeed(feed) {
 
 		var image = '';
 		if(settings.SHOW_IMAGES) {
-			image = '<img class="media-object" style="max-width: 64px; max-height: 64px;" src="' + $(dirtyDescription).find('img').first().attr('src') + '" alt="Image">';
+			image = '<img class="media-object" width="64px" height="64px" style="width: 64px; height: 64px;" src="' + $(dirtyDescription).find('img').first().attr('src') + '" alt="Image">';
 		}
 
 		var title = entry.title;
