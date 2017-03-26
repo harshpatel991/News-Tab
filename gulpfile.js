@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var concatCss = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
+var watch = require('gulp-watch');
 
 var scripts = [
     './js/lib/jquery-2.1.4.min.js',
@@ -13,18 +14,11 @@ var scripts = [
     './js/lib/jfeed.js',
     './js/lib/jfeeditem.js',
     './js/lib/jquery.simpleWeather.min.js',
-    './js/background.js',
-    './js/googleNewsUrlBuilder.js',
-    './js/settings.js',
-    './js/storageManager.js',
-    './js/weather.js'
+    './js/*'
 ];
 
 var cssFiles = [
-    './css/bootstrap.min.css',
-    './css/dark-mode.css',
-    './css/weather.css',
-    './css/custom.css'
+    './css/*'
 ];
 
 gulp.task('scripts', function() {
@@ -43,6 +37,10 @@ gulp.task('cssFiles', function () {
         .pipe(rename('all.min.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('watch', function() {
+    gulp.watch(scripts.concat(cssFiles), ['default'])
 });
 
 gulp.task('default', ['scripts', 'cssFiles']);
