@@ -35,10 +35,13 @@ function setDarkMode() {
 }
 
 function setTheme() {
-	var themeImage = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
-	$('#header').css('background-image', 'url(' + themeImage + ')');
+	var image = new Image();
+	image.onload = function () {
+		$('#header').css('background-image', 'url(' + this.src + ')');
+		$('#header').css({ opacity: 1 });
+	}
+	image.src = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
 }
-
 
 function clearFeed() {
 	$('#rss-content').empty();

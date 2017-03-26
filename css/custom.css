@@ -10,6 +10,7 @@ body {
 }
 
 .header {
+    transition: opacity 0.1s;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
