@@ -3,10 +3,11 @@ var THEME_IMAGES = {aurora: 'aurora.jpg', canyon: 'canyon.jpg', ocean: 'ocean.jp
 
 var HOURS_24 = 86400000;
 var MINUTES_30 = 1800000;
-var FEED_CACHE_KEY = "feed";
+var PARSED_FEED_CACHE_KEY = "parsedFeed";
 
 $(document).ready(function() {
 	deleteLargeObject("feedCache"); //clear out old feedCache, so there is room for new cache
+	deleteLargeObject("feed"); // clear out old unparsed feed, so there is room for new parsed cache
 	getObject(settings,
 		function(data) {
 			settings = data;
@@ -66,7 +67,7 @@ function loadAndDisplayMostVisited() {
 }
 
 function loadAndDisplayFeed () {
-	getFromTimedCache(FEED_CACHE_KEY, MINUTES_30, displayFeed, loadFeedFromOrigin);
+	getFromTimedCache(PARSED_FEED_CACHE_KEY, MINUTES_30, displayParsedFeed, loadFeedFromOrigin);
 }
 
 function loadFeedFromOrigin () {
@@ -76,8 +77,9 @@ function loadFeedFromOrigin () {
 			if (feed.items.length == 0) {
 				retryLoadFeedOrFail();
 			} else {
-				addToTimedCache(FEED_CACHE_KEY, feed);
-				displayFeed(feed); //TODO: could optimize this by only caching the elements that are going to be displayed
+				var parsedFeed = parseFeed(feed);
+				addToTimedCache(PARSED_FEED_CACHE_KEY, parsedFeed);
+				displayParsedFeed(parsedFeed); //TODO: could optimize this by only caching the elements that are going to be displayed
 			}
 		},
 		error: function() {
@@ -87,11 +89,16 @@ function loadFeedFromOrigin () {
 }
 
 function retryLoadFeedOrFail() {
-	getFromTimedCache(FEED_CACHE_KEY, HOURS_24, displayFeed, function() {}); //try again with a larger expiration time, if that fails, stop
+	getFromTimedCache(PARSED_FEED_CACHE_KEY, HOURS_24, displayParsedFeed, function() {}); //try again with a larger expiration time, if that fails, stop
 }
 
-function displayFeed(feed) {
-	$('#rss-content').append('<h3 id="rss-title">' + feed.title + '</h3><hr>');
+function displayParsedFeed(parsedFeed) {
+	$('#rss-content').append(parsedFeed).fadeIn(300);
+}
+
+function parseFeed(feed) {
+	var parsedFeed = '';
+	parsedFeed += '<h3 id="rss-title">' + feed.title + '</h3><hr>';
 	for (var i = 0; (i<feed.items.length) && (i<settings.FEED_ITEMS_COUNT); i++) {
 
 		var entry = feed.items[i];
@@ -120,8 +127,9 @@ function displayFeed(feed) {
 		newsItemTemplate = newsItemTemplate.replace("ITEM-LINK", link);
 		newsItemTemplate = newsItemTemplate.replace("ITEM-DESCRIPTION", description);
 
-		$('#rss-content').append(newsItemTemplate).fadeIn(300);
+		parsedFeed += newsItemTemplate;
 	}
+	return parsedFeed;
 }
 
 function findDescription(nodesArray) {

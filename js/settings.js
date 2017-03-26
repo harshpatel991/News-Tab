@@ -27,8 +27,6 @@ function saveSettingsItems() {
 	var googleTopic = $('#googleTopic').val();
 	var googleRegion = $('#googleRegion').val();
 
-	console.log(googleRegion);
-
 	settings = {
 		FEED_URL: feedURL,
 		FEED_ITEMS_COUNT: feedItemsCount,
@@ -49,7 +47,7 @@ function saveSettingsItems() {
 	loadAndDisplayMostVisited();
 
 	//bust the cache
-	addToTimedCache(FEED_CACHE_KEY, "");
+	addToTimedCache(PARSED_FEED_CACHE_KEY, "");
 	loadAndDisplayFeed();
 
 	//bust the cache
