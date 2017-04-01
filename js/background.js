@@ -94,6 +94,9 @@ function retryLoadFeedOrFail() {
 
 function displayParsedFeed(parsedFeed) {
 	$('#rss-content').append(parsedFeed).fadeIn(250);
+	$('.cacheable-image').each( function (index, imageElement) {
+		setImageFromCache($(imageElement).attr('cache-image-url'), $(this))
+	});
 }
 
 function parseFeed(feed) {
@@ -109,7 +112,7 @@ function parseFeed(feed) {
 
 		var image = '';
 		if(settings.SHOW_IMAGES) {
-			image = '<img class="media-object" width="64px" height="64px" style="width: 64px; height: 64px;" src="' + $(dirtyDescription).find('img').first().attr('src') + '" alt="Image">';
+			image = '<img class="media-object cacheable-image" width="64px" height="64px" style="width: 64px; height: 64px;" cache-image-url="' + $(dirtyDescription).find('img').first().attr('src') + '" alt="Image">';
 		}
 
 		var title = entry.title;
