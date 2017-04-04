@@ -16,14 +16,13 @@ $(document).ready(function() {
 			loadAndDisplayFeed();
 			loadAndDisplayMostVisited();
 			loadAndDisplayWeather();
-			updateSettingsItems();
 		}
 	);
 
 	$('#saveAndClose').click(saveSettingsItems);
 
 	$('#myModal').on('show.bs.modal', function (e) {
-		$('#modalLoadingText').html("");
+		updateSettingsItems();
 	});
 });
 

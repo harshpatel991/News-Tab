@@ -56,7 +56,6 @@ function saveSettingsItems() {
 
 	setObject(settings,
 		function() {
-			$('#modalLoadingText').html("Saving...");
 			$('#myModal').modal('toggle');
 		}
 	);
