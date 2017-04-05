@@ -5,7 +5,9 @@ function loadAndDisplayWeather() {
 }
 
 function displayWeather(weather) {
-	$("#weather").html('<h3 style="margin:0"><i class="icon-'+weather.code+'" id="weather-icon"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h3>').fadeIn(300);
+	var html = '<h3 style="text-align: right; margin:0"><i class="icon-'+weather.code+'" id="weather-icon"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h3>';
+	html += ' <h5 style="display: inline-block; margin:0"> Tomorrow: '+weather.forecast[1].text + ' ' + weather.forecast[1].high + '&deg;</h5>';
+	$("#weather").html(html).fadeIn(300);
 }
 
 function getWeatherFromOrigin() {
@@ -15,7 +17,7 @@ function getWeatherFromOrigin() {
 		unit: settings.WEATHER_UNITS,
 		success: function(weather) {
 			displayWeather(weather);
-			addToTimedCache(WEATHER_CACHE_KEY, {"code": weather.code, "temp": weather.temp, "units": {"temp": weather.units.temp}}); //only cache the data that's going to be used
+			addToTimedCache(WEATHER_CACHE_KEY, {"code": weather.code, "temp": weather.temp, "forecast": weather.forecast, "units": {"temp": weather.units.temp}}); //only cache the data that's going to be used
 		},
 		error: function(error) {
 			retryLoadWeatherOrFail();
