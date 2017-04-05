@@ -3,6 +3,9 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
+  "background": {
+    "page": "index.html"
+  },
   "content_security_policy": "script-src 'self' https://query.yahooapis.com; object-src 'self'",
 
   "description": "An Google Now themed top news stories reader for your New Tab page",
