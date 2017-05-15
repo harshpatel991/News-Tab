@@ -1,14 +1,21 @@
+/**
+ * Set the image src on the domElement, either get the image from the cache or make a network request for it
+ */
 function setImageFromCache(url, domElement) {
 	getLocalObject("URL:" + url, function(cachedImage) {
-		if (cachedImage != null && cachedImage != "") {
+		if (cachedImage != null && cachedImage != "") { // found it in the cache
 			setImage(domElement, cachedImage);
-		} else {
-			toDataUrl(url, function (loadedImage) {
-				setLocalObject("URL:" + url, loadedImage);
+		} else { // not in the cache
+			toDataUrl(url, function (loadedImage) { 
+				setLocalObject("URL:" + url, loadedImage); //cache it
 				setImage(domElement, loadedImage);
 			});
 		}
 	});
+}
+
+function clearImageCache() {
+	removeLocalObjectWithPrefix("URL:");
 }
 
 function setImage(domElement, image) {

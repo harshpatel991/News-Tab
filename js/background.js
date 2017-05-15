@@ -78,6 +78,7 @@ function loadFeedFromOrigin () {
 			} else {
 				var parsedFeed = parseFeed(feed);
 				addToTimedCache(PARSED_FEED_CACHE_KEY, parsedFeed);
+				clearImageCache();
 				displayParsedFeed(parsedFeed); //TODO: could optimize this by only caching the elements that are going to be displayed
 			}
 		},
@@ -94,7 +95,7 @@ function retryLoadFeedOrFail() {
 function displayParsedFeed(parsedFeed) {
 	$('#rss-content').append(parsedFeed).fadeIn(250);
 	$('.cacheable-image').each( function (index, imageElement) {
-		setImageFromCache($(imageElement).attr('cache-image-url'), $(this))
+		setImageFromCache($(imageElement).attr('cache-image-url'), $(this));
 	});
 }
 

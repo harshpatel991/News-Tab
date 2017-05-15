@@ -71,3 +71,20 @@ function getLocalObject(key, callback) {
 		callback(item[key]);
 	});
 };
+
+/**
+ * Finds all objects matching the prefix, removes them from local storage
+ */
+function removeLocalObjectWithPrefix(prefix) {
+	var toRemove = [];
+	chrome.storage.local.get(null, function(items) {
+		for (var key in items) {
+			if (items.hasOwnProperty(key)) {
+				if (key.lastIndexOf(prefix, 0) === 0) {
+					toRemove.push(key);
+				}
+			}
+		}
+		chrome.storage.local.remove(toRemove, function(removed) {});
+	});
+};
