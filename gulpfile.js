@@ -3,8 +3,10 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var optimzeJs = require('gulp-optimize-js');
 var concatCss = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
+var htmlmin = require('gulp-htmlmin');
 var watch = require('gulp-watch');
 
 var scripts = [
@@ -21,12 +23,17 @@ var cssFiles = [
     './css/*'
 ];
 
+var htmlFiles = [
+    'index.html'
+];
+
 gulp.task('scripts', function() {
     return gulp.src(scripts)
         .pipe(concat('all.js'))
         .pipe(gulp.dest('./dist/'))
         .pipe(rename('all.min.js'))
         .pipe(uglify())
+        .pipe(optimzeJs())
         .pipe(gulp.dest('./dist/'));
 });
 
@@ -39,8 +46,15 @@ gulp.task('cssFiles', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('watch', ['scripts', 'cssFiles'], function() {
-    gulp.watch(scripts.concat(cssFiles), ['default'])
+gulp.task('html', function() {
+    return gulp.src(htmlFiles)
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(rename('index.min.html'))
+        .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', ['scripts', 'cssFiles']);
+gulp.task('watch', ['scripts', 'cssFiles', 'html'], function() {
+    gulp.watch(scripts.concat(cssFiles).concat(htmlFiles), ['default'])
+});
+
+gulp.task('default', ['scripts', 'cssFiles', 'html']);

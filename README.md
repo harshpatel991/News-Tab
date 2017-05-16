@@ -24,7 +24,7 @@
 * Weather forecast loaded from Yahoo Weather
 
 ### Development
-To run JS and CSS concatenation/minification/uglification
+To run JS/CSS/HTML concatenation/uglification/optimization
 ```bash
 > gulp watch
 ```

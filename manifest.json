@@ -4,7 +4,7 @@
     "newtab": "index.html"
   },
   "background": {
-    "page": "index.html"
+    "page": "dist/index.min.html"
   },
   "content_security_policy": "script-src 'self' https://query.yahooapis.com; object-src 'self'",
 
