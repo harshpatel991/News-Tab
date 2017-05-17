@@ -23,6 +23,10 @@
 * Fonts included locally for speed
 * Weather forecast loaded from Yahoo Weather
 
+### Performance
+
+![alt text](http://i.imgur.com/KR2v5Zy.png "Image4")
+
 ### Development
 To run JS/CSS/HTML concatenation/uglification/optimization
 ```bash
