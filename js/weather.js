@@ -6,7 +6,10 @@ function loadAndDisplayWeather() {
 
 function displayWeather(weather) {
 	var html = '<h3 style="text-align: right; margin:0"><i class="icon-'+weather.code+'" id="weather-icon"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h3>';
-	html += ' <h5 style="display: inline-block; margin:0"> Tomorrow: '+weather.forecast[1].text + ' ' + weather.forecast[1].high + '&deg;</h5>';
+
+	if (weather.forecast && weather.forecast[1]) { //check if value is defined for backwards compatibility
+		html += ' <h5 style="display: inline-block; margin:0"> Tomorrow: ' + weather.forecast[1].text + ' ' + weather.forecast[1].high + '&deg;</h5>';
+	}
 	$("#weather").html(html).fadeIn(300);
 }
 
