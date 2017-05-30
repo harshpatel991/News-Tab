@@ -4,6 +4,7 @@ var settings =  { //default settings
 	FEED_URL: FEED_URL,
 	FEED_ITEMS_COUNT: 10,
 	THEME: 'beach3',
+	CUSTOM_IMAGE: null,
 	SHOW_IMAGES: true,
 	SHOW_DESCRIPTION: true,
 	SHOW_MOST_VISITED: true,
@@ -14,10 +15,13 @@ var settings =  { //default settings
 	GOOGLE_TOPIC: 'TOP_STORIES'
 };
 
+var customThemeImage = null;
+
 function saveSettingsItems() {
 	var feedURL = $('#feedURL').val();
 	var feedItemsCount = $('#feedItemsCount').val();
 	var theme = $('#theme').val();
+	var customImage = getCurrentCustomImagePreviewImage();
 	var showImages = $('#showImages').is(':checked');
 	var showDescription = $('#showDescription').is(':checked');
 	var showMostVisited = $('#showMostVisited').is(':checked');
@@ -27,10 +31,13 @@ function saveSettingsItems() {
 	var googleTopic = $('#googleTopic').val();
 	var googleRegion = $('#googleRegion').val();
 
+	console.log("saving url:" + customImage);
+
 	settings = {
 		FEED_URL: feedURL,
 		FEED_ITEMS_COUNT: feedItemsCount,
 		THEME: theme,
+		CUSTOM_IMAGE: customImage,
 		SHOW_IMAGES: showImages ,
 		SHOW_DESCRIPTION: showDescription,
 		SHOW_MOST_VISITED: showMostVisited,
@@ -89,4 +96,16 @@ function updateSettingsItems() {
 	$('#weather-units').val(settings.WEATHER_UNITS);
 	$('#googleTopic').val(settings.GOOGLE_TOPIC);
 	$('#googleRegion').val(settings.GOOGLE_REGION);
+	
+	// load custom image from storage
+	if (settings.CUSTOM_IMAGE != null) {
+		setCustomThemeImagePreview(settings.CUSTOM_IMAGE, $("#customImagePreview"));
+	} else {
+		clearCustomImage();
+	}
+
+	clearCustomImageFormInput();
+
+	$('#clearCustomImage').click(onClickClearCustomImage);
 }
+
