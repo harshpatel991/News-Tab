@@ -121,3 +121,31 @@ body {
     /*removes the default border*/
     border-color: #fff;
 }
+
+.panel-info {
+    background-color: #fff;
+    border-color: #ffffff;
+    box-shadow: 4px 4px 20px #d4d4d4;
+}
+
+.panel-info>.panel-heading {
+    color: #fff;
+    background-color: #46555c;
+    border-width: 0;
+}
+
+.customImagePreview {
+    height: 150px;
+    width: 100%;
+    background-size: cover;
+    background-position: top;
+    margin: 5px;
+}
+
+.errorMessage {
+    color: #ff0000;
+}
+
+.light-gray hr{
+    color: #e5e5e5;
+}

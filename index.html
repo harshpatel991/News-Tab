@@ -105,102 +105,144 @@
             </div>
             <div class="modal-body">
 
-                <form>
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Feeds Settings</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="googleTopic">Feed Topic</label>
+                                        <select id="googleTopic" class="form-control">
+                                            <!--Items get populated here-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="googleRegion">Feed Region</label>
+                                        <select id="googleRegion" class="form-control">
+                                            <!--Items get populated here-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="display: none;">
+                                <label for="feedURL">Feed URL (default - https://news.google.com/?output=rss)</label>
+                                <input id="feedURL" class="form-control" placeholder="ex: https://news.google.com/?output=rss">
+                            </div>
+
                             <div class="form-group">
-                                <label for="googleTopic">Feed Topic</label>
-                                <select id="googleTopic" class="form-control">
-                                    <!--Items get populated here-->
+                                <label for="feedItemsCount">Feed Items</label>
+                                <select id="feedItemsCount" class="form-control">
+                                    <option value="1">1</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
                                 </select>
                             </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input id="showImages" type="checkbox"><b>Show Images</b>
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input id="showDescription" type="checkbox"><b>Show Description</b>
+                                </label>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Weather Settings</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="weather-location">Weather Location</label>
+                                        <input class="form-control" id="weather-location">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="weather-units">Weather Units</label>
+                                        <select id="weather-units" class="form-control">
+                                            <option value="f">Fahrenheit</option>
+                                            <option value="c">Celsius</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Theme Settings</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="checkbox">
+                                <label>
+                                    <input id="darkMode" type="checkbox"><b>Dark Mode</b>
+                                </label>
+                            </div>
+
                             <div class="form-group">
-                                <label for="googleRegion">Feed Region</label>
-                                <select id="googleRegion" class="form-control">
-                                    <!--Items get populated here-->
+                                <label for="theme">Theme Image</label>
+                                <select id="theme" class="form-control">
+                                    <option value="aurora">Aurora</option>
+                                    <option value="canyon">Canyon</option>
+                                    <option value="ocean">Ocean</option>
+                                    <option value="brick">Brick</option>
+                                    <option value="farm">Farm</option>
+                                    <option value="mountain">Mountain</option>
+                                    <option value="beach">Beach</option>
+                                    <option value="beach2">Beach 2</option>
+                                    <option value="beach3">Beach 3</option>
+                                    <option value="islands">Islands</option>
+                                    <option value="seaside">Sea Side</option>
+                                    <option value="waterfall">Waterfall</option>
                                 </select>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group" style="display: none;">
-                        <label for="feedURL">Feed URL (default - https://news.google.com/?output=rss)</label>
-                        <input id="feedURL" class="form-control" placeholder="ex: https://news.google.com/?output=rss">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="feedItemsCount">Feed Items</label>
-                        <select id="feedItemsCount" class="form-control">
-                            <option value="1">1</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input id="showImages" type="checkbox"><b>Show Images</b>
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input id="showDescription" type="checkbox"><b>Show Description</b>
-                        </label>
-                    </div>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="weather-location">Weather Location</label>
-                                <input class="form-control" id="weather-location">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="weather-units">Weather Units</label>
-                                <select id="weather-units" class="form-control">
-                                    <option value="f">Fahrenheit</option>
-                                    <option value="c">Celsius</option>
-                                </select>
+                                <label for="theme">Custom Image</label>
+                                <p class="help-block">You can upload a custom image. Be aware that a large image will slow down browsing so crop and compress your image before uploading. Max: 4MB </p>
+
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <input type="file" id="customImageInput"/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button type="button" class="btn btn-success" id="uploadCustomImage">Upload</button>
+                                    </div>
+                                </div>
+                                <p id="customImageErrorMessage" class="errorMessage"></p>
+                                <div id="themePreview"></div>
                             </div>
                         </div>
                     </div>
 
-                    <br>
-                    <div class="checkbox">
-                        <label>
-                            <input id="darkMode" type="checkbox"><b>Dark Mode</b>
-                        </label>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Misc</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="checkbox">
+                                <label>
+                                    <input id="showMostVisited" type="checkbox"><b>Show Most Visited Sites</b>
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="theme">Theme</label>
-                        <select id="theme" class="form-control">
-                            <option value="aurora">Aurora</option>
-                            <option value="canyon">Canyon</option>
-                            <option value="ocean">Ocean</option>
-                            <option value="brick">Brick</option>
-                            <option value="farm">Farm</option>
-                            <option value="mountain">Mountain</option>
-                            <option value="beach">Beach</option>
-                            <option value="beach2">Beach 2</option>
-                            <option value="beach3">Beach 3</option>
-                            <option value="islands">Islands</option>
-                            <option value="seaside">Sea Side</option>
-                            <option value="waterfall">Waterfall</option>
-                        </select>
-                    </div>
-                    <br>
-                    <div class="checkbox">
-                        <label>
-                            <input id="showMostVisited" type="checkbox"><b>Show Most Visited Sites</b>
-                        </label>
-                    </div>
-
-                </form>
 
             </div>
             <div class="modal-footer">

@@ -27,13 +27,37 @@ var htmlFiles = [
     'index.html'
 ];
 
-gulp.task('scripts', function() {
+gulp.task('uglyScripts', function() {
     return gulp.src(scripts)
         .pipe(concat('all.js'))
         .pipe(gulp.dest('./dist/'))
         .pipe(rename('all.min.js'))
         .pipe(uglify())
         .pipe(optimzeJs())
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('uglyCSSFiles', function () {
+    return gulp.src(cssFiles)
+        .pipe(concatCss("all.css"))
+        .pipe(gulp.dest('./dist/'))
+        .pipe(rename('all.min.css'))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('uglyHTML', function() {
+    return gulp.src(htmlFiles)
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(rename('index.min.html'))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('scripts', function() {
+    return gulp.src(scripts)
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('./dist/'))
+        .pipe(rename('all.min.js'))
         .pipe(gulp.dest('./dist/'));
 });
 
@@ -48,13 +72,14 @@ gulp.task('cssFiles', function () {
 
 gulp.task('html', function() {
     return gulp.src(htmlFiles)
-        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(rename('index.min.html'))
         .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('watch', ['scripts', 'cssFiles', 'html'], function() {
-    gulp.watch(scripts.concat(cssFiles).concat(htmlFiles), ['default'])
+    gulp.watch(scripts.concat(cssFiles).concat(htmlFiles), ['dev'])
 });
 
-gulp.task('default', ['scripts', 'cssFiles', 'html']);
+gulp.task('dev', ['html', 'cssFiles', 'scripts']);
+
+gulp.task('default', ['uglyScripts', 'uglyCSSFiles', 'uglyHTML']);

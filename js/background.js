@@ -19,7 +19,7 @@ $(document).ready(function() {
 		}
 	);
 
-	$('#saveAndClose').click(saveSettingsItems);
+	$('#saveAndClose').click(saveSettingsItems); 
 
 	$('#myModal').on('show.bs.modal', function (e) {
 		updateSettingsItems();
@@ -35,11 +35,15 @@ function setDarkMode() {
 }
 
 function setTheme() {
-	var image = new Image();
-	image.onload = function () {
-		$('#header').css( { 'background-image': 'url(' + this.src + ')', opacity: 1  });
-	};
-	image.src = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
+	if(settings.CUSTOM_IMAGE != null) {
+		$('#header').css( { 'background-image': 'url(' + settings.CUSTOM_IMAGE + ')', opacity: 1  });
+	} else {
+		var image = new Image();
+		image.onload = function () {
+			$('#header').css({'background-image': 'url(' + this.src + ')', opacity: 1});
+		};
+		image.src = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
+	}
 }
 
 function clearFeed() {
