@@ -49,3 +49,11 @@ crashlytics-build.properties
 
 #node modules
 node_modules
+
+#dist directory
+dist/all.css
+dist/all.min.css
+dist/all.js
+dist/all.min.js
+dist/all.css
+dist/index.min.html
