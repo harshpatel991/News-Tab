@@ -57,3 +57,5 @@ dist/all.js
 dist/all.min.js
 dist/all.css
 dist/index.min.html
+
+.DS_Store
