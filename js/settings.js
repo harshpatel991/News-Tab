@@ -3,8 +3,7 @@ var FEED_URL = 'https://news.google.com/?output=rss';
 var settings =  { //default settings
 	FEED_URL: FEED_URL,
 	FEED_ITEMS_COUNT: 10,
-	THEME: 'beach3',
-	CUSTOM_IMAGE: null,
+	THEME: 'beach3', //this contains the the key for a default theme or the entire file path for a custom theme
 	SHOW_IMAGES: true,
 	SHOW_DESCRIPTION: true,
 	SHOW_MOST_VISITED: true,
@@ -15,13 +14,10 @@ var settings =  { //default settings
 	GOOGLE_TOPIC: 'TOP_STORIES'
 };
 
-var customThemeImage = null;
-
 function saveSettingsItems() {
 	var feedURL = $('#feedURL').val();
 	var feedItemsCount = $('#feedItemsCount').val();
 	var theme = $('#theme').val();
-	var customImage = getCurrentCustomImagePreviewImage();
 	var showImages = $('#showImages').is(':checked');
 	var showDescription = $('#showDescription').is(':checked');
 	var showMostVisited = $('#showMostVisited').is(':checked');
@@ -31,13 +27,10 @@ function saveSettingsItems() {
 	var googleTopic = $('#googleTopic').val();
 	var googleRegion = $('#googleRegion').val();
 
-	console.log("saving url:" + customImage);
-
 	settings = {
 		FEED_URL: feedURL,
 		FEED_ITEMS_COUNT: feedItemsCount,
 		THEME: theme,
-		CUSTOM_IMAGE: customImage,
 		SHOW_IMAGES: showImages ,
 		SHOW_DESCRIPTION: showDescription,
 		SHOW_MOST_VISITED: showMostVisited,
@@ -72,6 +65,12 @@ function saveSettingsItems() {
  * Loads settings into the HTML form
  */
 function updateSettingsItems() {
+    $('#googleTopic').empty(); //clear out existing dropdowns, otherwise we'll keep appending more
+    $('#googleRegion').empty();
+    $("#theme").empty();
+
+    setupUploadButtonClickBehaviour();
+
 	//add items to google lists
 	for (var aTopic in TOPIC) {
 		if (TOPIC.hasOwnProperty(aTopic)) {
@@ -85,8 +84,18 @@ function updateSettingsItems() {
 		}
 	}
 
+    //load the custom themes from storage, merge them with the default list, and display
+	getCustomThemes(function(customThemes) {
+        var themes = Object.assign({}, THEME_IMAGES, customThemes);
+        for (var aTheme in themes) {
+            if (themes.hasOwnProperty(aTheme)) {
+                $("#theme").append(getThemeSelectOptionHTML(aTheme));
+            }
+        }
+        $('#theme').val(settings.THEME); //pre-select the theme
+    });
+
 	$('#feedURL').val(settings.FEED_URL);
-	$('#theme').val(settings.THEME);
 	$('#feedItemsCount').val(settings.FEED_ITEMS_COUNT);
 	$('#showImages').prop('checked', settings.SHOW_IMAGES);
 	$('#showDescription').prop('checked', settings.SHOW_DESCRIPTION);
@@ -96,16 +105,4 @@ function updateSettingsItems() {
 	$('#weather-units').val(settings.WEATHER_UNITS);
 	$('#googleTopic').val(settings.GOOGLE_TOPIC);
 	$('#googleRegion').val(settings.GOOGLE_REGION);
-	
-	// load custom image from storage
-	if (settings.CUSTOM_IMAGE != null) {
-		setCustomThemeImagePreview(settings.CUSTOM_IMAGE, $("#customImagePreview"));
-	} else {
-		clearCustomImage();
-	}
-
-	clearCustomImageFormInput();
-
-	$('#clearCustomImage').click(onClickClearCustomImage);
 }
-

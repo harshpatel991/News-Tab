@@ -1,7 +1,7 @@
 {
 
   "chrome_url_overrides": {
-    "newtab": "index.html"
+    "newtab": "dist/index.min.html"
   },
   "background": {
     "page": "dist/index.min.html"
@@ -16,7 +16,8 @@
     "https://query.yahooapis.com/",
     "storage",
     "topSites",
-    "chrome://favicon/"
+    "chrome://favicon/",
+    "unlimitedStorage"
   ],
   "short_name": "News Tab",
   "version": "0.1.3",
