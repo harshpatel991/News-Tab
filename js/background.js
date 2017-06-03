@@ -1,6 +1,3 @@
-var IMAGE_DIRECTORY = '../images/themes/';
-var THEME_IMAGES = {aurora: 'aurora.jpg', canyon: 'canyon.jpg', ocean: 'ocean.jpg', brick: 'brick.jpg', farm: 'farm.jpg', mountain: 'mountain.jpg', beach: 'beach.jpg', beach2: 'beach2.jpg', beach3: 'beach3.jpg', islands: 'islands.jpg', seaside: 'seaside.jpg', waterfall: 'waterfall.jpg'};
-
 var HOURS_24 = 86400000;
 var MINUTES_30 = 1800000;
 var PARSED_FEED_CACHE_KEY = "parsedFeed";
@@ -19,7 +16,7 @@ $(document).ready(function() {
 		}
 	);
 
-	$('#saveAndClose').click(saveSettingsItems); 
+	$('#saveAndClose').click(saveSettingsItems);
 
 	$('#myModal').on('show.bs.modal', function (e) {
 		updateSettingsItems();
@@ -31,18 +28,6 @@ function setDarkMode() {
 		$('body').addClass('dark-mode');
 	} else {
 		$('body').removeClass('dark-mode');
-	}
-}
-
-function setTheme() {
-	if(settings.CUSTOM_IMAGE != null) {
-		$('#header').css( { 'background-image': 'url(' + settings.CUSTOM_IMAGE + ')', opacity: 1  });
-	} else {
-		var image = new Image();
-		image.onload = function () {
-			$('#header').css({'background-image': 'url(' + this.src + ')', opacity: 1});
-		};
-		image.src = IMAGE_DIRECTORY + THEME_IMAGES[settings.THEME];
 	}
 }
 
