@@ -20,7 +20,7 @@ $(document).ready(function() {
 	$('#saveAndClose').click(saveSettingsItems);
 
 	$('#myModal').on('show.bs.modal', function (e) {
-		updateSettingsItems();
+		updateSettingsItems(e);
 	});
 });
 

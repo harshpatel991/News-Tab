@@ -19,13 +19,15 @@ function setTheme() {
         $('#header').css({'background-image': 'url(' + this.src + ')', opacity: 1});
     };
     image.onerror = function() {
-        //TODO: on image load error, clear the Custom Image
+        _gaq.push(['_trackEvent', 'Custom image does not exist', 'error']);
     };
     image.src = imagePath;
 }
 
 function setupUploadButtonClickBehaviour() {
-	$("#uploadCustomImage").click(function () {
+	$("#uploadCustomImage").click(function (event) {
+        _gaq.push(['_trackEvent', event.target.id, 'clicked']);
+
 		var file = document.getElementById("customImageInput").files[0];
 		var fr = new FileReader();
 		fr.onload = function() {
@@ -63,7 +65,7 @@ function saveImageFile(fileInput, fileName, callback) {
 		fileSystem.root.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
 			fileEntry.createWriter(function (fileWriter) {
 				fileWriter.onerror = function (e) {
-					//TODO: fire analytics event with e.getMessage()
+                    _gaq.push(['_trackEvent', 'fileWriter.onerror ' + e.getMessage(), 'error']);
 				};
 				fileWriter.write(fileInput);
 				getFilePathAsURL(fileSystem, fileName, callback);
@@ -80,7 +82,7 @@ function getFilePathAsURL(fileSystem, fileName, callback) {
 }
 
 function errorHandler(e) {
-	//TODO: log e.code to analytics
+    _gaq.push(['_trackEvent', 'Upload errorHandler ' + e.getCode, 'error']);
 }
 
 function clearErrorMessage() {

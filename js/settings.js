@@ -14,7 +14,9 @@ var settings =  { //default settings
 	GOOGLE_TOPIC: 'TOP_STORIES'
 };
 
-function saveSettingsItems() {
+function saveSettingsItems(event) {
+    _gaq.push(['_trackEvent', event.target.id, 'clicked']);
+
 	var feedURL = $('#feedURL').val();
 	var feedItemsCount = $('#feedItemsCount').val();
 	var theme = $('#theme').val();
@@ -64,7 +66,8 @@ function saveSettingsItems() {
 /**
  * Loads settings into the HTML form
  */
-function updateSettingsItems() {
+function updateSettingsItems(event) {
+    _gaq.push(['_trackEvent', event.target.id, 'clicked']);
     $('#googleTopic').empty(); //clear out existing dropdowns, otherwise we'll keep appending more
     $('#googleRegion').empty();
     $("#theme").empty();
