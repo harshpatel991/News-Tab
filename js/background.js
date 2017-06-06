@@ -1,4 +1,4 @@
-var APP_VERSION = /*app-version*/"0.1.2"/*app-version*/;
+var APP_VERSION = /*app-version*/"0.1.4"/*app-version*/;
 var HOURS_24 = 86400000;
 var MINUTES_30 = 1800000;
 var PARSED_FEED_CACHE_KEY = "parsedFeed";
