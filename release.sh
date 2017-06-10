@@ -22,7 +22,7 @@ gulp
 
 sed "s/\"version.*/\"version\": \"${tag}\",/" manifest.json > manifest.tmp;
 mv manifest.tmp manifest.json
-git commit -m "Release $tag" manifest.json
+git commit -m "Release $tag" manifest.json js/background.js index.html
 git tag -a "$tag" -m "$tag"
 
 zip -r "../rtab-$tag.zip" . -x *.git* *.ds_store* *DS_Store* *.idea* *.npmignore* gulpfile.js js/\* node_modules/\* css/\*
