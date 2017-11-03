@@ -49,11 +49,4 @@ To create a release
 ### Future Features
 * Full screen theme image
 * Allowing arbitrary RSS feeds
-* Rotating theme images (on every load, hourly, daily)
-* Remove full Bootstrap javascript for a modularized implementation
-* Leverage web workers
-* Remove duplicate jQuery selectors, define in a central location -- actually, get rid of query selectors all together
-* Cache favicons in local storage
-* New features box after an update
-* Survey on uninstall
-* Additional views for RSS feed such as Cards and Boxed Lists
+* Rotating theme images (on every load, daily, weekly)
