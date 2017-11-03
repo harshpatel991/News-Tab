@@ -92,7 +92,7 @@ function displayParsedFeed(parsedFeed) {
 function parseFeed(feed) {
 	var parsedFeed = '';
 	parsedFeed += '<h3 id="rss-title">' + feed.title + '</h3><hr>';
-	for (var i = 1; (i<feed.items.length) && (i<settings.FEED_ITEMS_COUNT); i++) {
+	for (var i = 0; (i<feed.items.length) && (i<settings.FEED_ITEMS_COUNT); i++) {
 
 		var entry = feed.items[i];
 

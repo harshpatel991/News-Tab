@@ -1,5 +1,5 @@
 // var FEED_URL = 'http://cors.io/?u=http://news.google.com/?output=rss';
-var FEED_URL = 'https://news.google.com/?output=rss';
+var FEED_URL = 'https://news.google.com/news/rss?fa=ke';
 var settings =  { //default settings
 	FEED_URL: FEED_URL,
 	FEED_ITEMS_COUNT: 10,
