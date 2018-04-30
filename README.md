@@ -1,4 +1,4 @@
-# rTab
+# News Tab
 ## A Google News RSS feed reader for Chrome's new tab page focused on being as fast as possible
 
 ### [Download for Chrome here](https://chrome.google.com/webstore/detail/news-tab-new-tab-page-rep/cdpnmcehklcfepflojdklfggahnaolid)
